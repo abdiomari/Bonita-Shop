@@ -1,0 +1,43 @@
+{% load static %}
+<!-- view_cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Makeup Store</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+        <nav>
+            <a href="{% url 'product_list' %}">Continue Shopping</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Cart Items</h2>
+        {% if cart_items %}
+            <ul>
+                {% for item in cart_items %}
+                    <li>
+                        {{ item.product.name }} - Quantity: {{ item.quantity }} 
+                        <form action="{% url 'remove_from_cart' item.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit">Remove</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>Total Price: Kes. {{ total_price }}</p>
+        {% else %}
+            <p>Your cart is empty.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bonita Makeup Store</p>
+    </footer>
+</body>
+</html>

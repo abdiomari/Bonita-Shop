@@ -1,0 +1,28 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Makeup Store</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        <div>
+            <label for="id_email">Email:</label>
+            <input type="email" name="email" id="id_email" required>
+        </div>
+        <div>
+            <label for="id_password1">Password:</label>
+            <input type="password" name="password1" id="id_password1" required>
+        </div>
+        <div>
+            <label for="id_password2">Confirm Password:</label>
+            <input type="password" name="password2" id="id_password2" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
