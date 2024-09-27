@@ -1,0 +1,169 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="header">
+        <div class="container">
+            {% include 'partials/navbar.html' %}
+            <div class="row">
+                <div class="col-2">
+                    <h1>Look And <br> Feel Bonita!</h1>
+                    <p>Success isn't always about greatness. It;s about consistency. Consistent <br> hard work gains
+                        success. Greatness will come.</p>
+                    <a href="" class="btn">Explore Now &#8594;</a>
+                </div>
+                <div class="col-2">
+                    <img src="{% static 'images/bonita-babe-hero-section.jpg' %}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feadtued Categories -->
+
+    <div class="categories">
+        <h2 class="title">Featured Category ~ {{ featured_category.name }}</h2>
+        <div class="small-container">
+            <div class="row">
+                {% for product in featured_category_products %}
+                <div class="col-3">
+                    <img src="{{ product.image.url }}" alt="{{ product.description }}" >
+                    <h4>{{ product.name }}</h4>
+                    <p>{{ product.description }}</p>
+                    <p>Kshs. {{ product.price }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Products -->
+
+    <div class="small-container">
+        <h2 class="title">Featured Products</h2>
+        <div class="row">
+            {% for product in featured_products %}
+            <div class="col-4">
+                <a href="{% url 'product_detail'  product.id %}">
+                    <img class="product_image" src="{{ product.image.url }}" alt="{{ product.description }}"></a>
+                <h4>{{ product.name }}</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>KShs. {{ product.price }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+{% comment %} Latest Products {% endcomment %}
+        <h2 class="title">Latest Products</h2>
+        <div class="row">
+            {% for product in latest_products %}
+            <div class="col-4">
+                <a href="{% url 'product_detail' product.id %}">
+                <img class="product_image" src="{{ product.image.url }}" alt="{{ product.description }}"></a>
+                <h4>{{ product.name }}</h4>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>KShs. {{ product.price }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Offer -->
+    <div class="offer">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="{% static 'images/products/Premium Kit.jpg' %}" alt='Premium Kit' class="offer-img">
+                </div>
+                <div class="col-2">
+                    <p>The Premium Kit</p>
+                    <h1>Premium Kit</h1>
+                    <small>The Mi Smart Band 4 fearures a 39.9%larger (than Mi Band 3) AMOLED color full-touch display
+                        with adjustable brightness, so everything is clear as can be.<br></small>
+                    <a href="products.html" class="btn">Buy Now &#8594;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonial -->
+    <div class="testimonial">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        industry's standard dummy text.</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="{% static 'images/bonita_babes/Bonita babe 1.jpg' %}">
+                    <h3>Bonita Babe 1</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        industry's standard dummy text.</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="{% static 'images/bonita_babes/Bonita babe 2.jpg' %}">
+                    <h3>Bonita Babe 2</h3>
+                </div>
+                <div class="col-3">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        industry's standard dummy text.</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <img src="{% static 'images/bonita_babes/Bonita babe 3.jpg' %}">
+                    <h3>Bonita Babe 3</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- javascript -->
+
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+    </script>
+
+
+{% endblock %}
